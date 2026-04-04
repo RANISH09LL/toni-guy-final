@@ -23,7 +23,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className={`navbar ${scrolled ? 'glass' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'glass' : ''} ${location.pathname === '/' && !scrolled ? 'navbar-light' : ''}`}>
       <div className="nav-container">
         <Link to="/" className="nav-logo">
           TONI<span className="text-gold">&amp;</span>GUY
