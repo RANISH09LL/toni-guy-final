@@ -145,6 +145,7 @@
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
 .stats-section::before {
@@ -207,6 +208,8 @@
 .about-section {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .about-section::before {
@@ -406,6 +409,8 @@
 .process-section {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .process-section::before {
@@ -483,6 +488,8 @@
 .reviews-section {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
   background: linear-gradient(180deg, #ffffff 0%, rgba(197,160,89,0.03) 50%, #ffffff 100%);
 }
 
@@ -583,6 +590,8 @@
   background: #fff;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .location-strip::before {
@@ -651,6 +660,8 @@
   border-top: 2px solid var(--accent-gold);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .cta-section::before {
@@ -744,14 +755,40 @@
 }
 
 @media (max-width: 768px) {
-  /* Match exact desktop design on mobile (overlay + right aligned text) */
+  /* Hero section: full-width, no overflow, centered image */
   .hero-section {
-    overflow: hidden; /* Stop any horizontal cropping or scrolling bugs */
+    overflow: hidden;
     width: 100%;
     padding: 0 5%;
   }
   .hero-bg img {
-    object-position: center; /* Keeps the model perfectly centered */
+    object-position: center;
+  }
+
+  /* Text overlaps image on mobile — switch to white */
+  .hero-content h1 {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    color: #ffffff;
+    word-wrap: break-word;
+  }
+  .hero-content p {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .hero-content .section-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .hero-scroll-indicator span {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  /* Darken the overlay so white text stays readable over the image */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.45) 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
   }
   .hero-content {
     background: transparent;
@@ -760,15 +797,11 @@
     -webkit-backdrop-filter: none;
     box-shadow: none;
     margin-top: 0;
-    width: 100%;      /* Fixes text overflowing or glitching off screen */
+    width: 100%;
     max-width: 100%;
     margin-left: 0;
     padding: 0;
     text-align: right;
-  }
-  .hero-content h1 {
-    font-size: clamp(2.2rem, 9vw, 3rem);
-    word-wrap: break-word; /* Prevents long words from breaking the layout */
   }
 }
 

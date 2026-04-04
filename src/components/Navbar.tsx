@@ -23,7 +23,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className={`navbar ${scrolled ? 'glass' : ''} ${location.pathname === '/' && !scrolled ? 'navbar-light' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'glass' : ''}`}>
       <div className="nav-container">
         <Link to="/" className="nav-logo">
           TONI<span className="text-gold">&amp;</span>GUY
@@ -40,19 +40,19 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
+      </div>
 
-        {/* Mobile Menu */}
-        <div className={`mobile-menu ${isOpen ? 'open' : ''} glass`}>
-          <Link to="/">Home</Link>
-          <Link to="/about">About Us</Link>
-          <Link to="/catalog">Style Catalog</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/contact" className="text-gold">Book Now</Link>
-        </div>
+      {/* Mobile Menu — sibling of nav-container, outside flex flow */}
+      <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
+        <Link to="/">Home</Link>
+        <Link to="/about">About Us</Link>
+        <Link to="/catalog">Style Catalog</Link>
+        <Link to="/blog">Blog</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/contact" className="text-gold">Book Now</Link>
       </div>
     </nav>
   );
